@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+    <div class="back-btn-container">
+        <a href="index.html" class="btn" style="display: inline-block; padding: 10px 25px; text-decoration: none;"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <section class="interactive-services">
+        <div class="panel-header">
+            <h3 class="section-title" style="text-align: left;">Digital Marketing Pricing</h3>
+        </div>
+        
+        <div class="inner-cards-grid">
+            <div class="inner-price-card animate-card">
+                <div class="card-image-box"><i class="fa-solid fa-magnifying-glass-chart img-placeholder-icon"></i></div>
+                <div class="card-icon-badge"><i class="fa-solid fa-chart-line"></i></div>
+                <h4>SEO Optimization</h4>
+                <p class="price">LKR 25,000</p>
+                <p class="desc">Rank your website on top of Google search results and drive organic traffic naturally.</p>
+                <a href="mailto:mtsdblueprint@gmail.com?subject=Request%20SEO%20Optimization" class="btn request-btn">Request This</a>
+            </div>
+
+            <div class="inner-price-card highlighted animate-card">
+                <div class="card-image-box"><i class="fa-solid fa-rectangle-ad img-placeholder-icon"></i></div>
+                <div class="card-icon-badge"><i class="fa-solid fa-bullseye"></i></div>
+                <h4>Google Ads Setup</h4>
+                <p class="price">LKR 20,000</p>
+                <p class="desc">Targeted advertising campaigns to boost your business leads and sales instantly.</p>
+                <a href="mailto:mtsdblueprint@gmail.com?subject=Request%20Google%20Ads%20Setup" class="btn request-btn">Request This</a>
+            </div>
+
+            <div class="inner-price-card animate-card">
+                <div class="card-image-box"><i class="fa-solid fa-share-nodes img-placeholder-icon"></i></div>
+                <div class="card-icon-badge"><i class="fa-solid fa-hashtag"></i></div>
+                <h4>Social Media Setup</h4>
+                <p class="desc">Complete setup and branding for your business profiles across top platforms.</p>
+                <button type="button" class="btn request-btn" id="social-setup-toggle">View Social Packages</button>
+            </div>
+        </div>
+        <div class="social-pricing-panel hidden" id="social-pricing-panel">
+            <h3>Social Media Package Options</h3>
+            <p class="desc">Select a package to see price details for Facebook, TikTok, Instagram, or bundle discounts.</p>
+            <div class="social-option-buttons">
+                <button type="button" class="package-btn active" data-package="facebook">Facebook Only</button>
+                <button type="button" class="package-btn" data-package="tiktok">TikTok Only</button>
+                <button type="button" class="package-btn" data-package="instagram">Instagram Only</button>
+                <button type="button" class="package-btn" data-package="two">Two Platforms</button>
+                <button type="button" class="package-btn" data-package="all">All Three Platforms</button>
+            </div>
+            <div class="social-pricing-details">
+                <p id="social-package-title">Facebook Only</p>
+                <p id="social-package-price">Base Price: LKR 8,000</p>
+                <p id="social-package-boost">Boost Option: + LKR 5,000</p>
+                <p id="social-package-note">Single platform package details with optional campaign boost.</p>
+                <a id="social-package-request" href="mailto:mtsdblueprint@gmail.com?subject=Request%20Facebook%20Page%20Setup" class="btn request-btn">Request Selected Package</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-box">
+                <h3>Marketing Payment</h3>
+                <ul class="payment-list">
+                    <li><span>Setup & Strategy</span> <strong class="glow-text">50%</strong></li>
+                    <li><span>Campaign Launch</span> <strong class="glow-text">50%</strong></li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <h3>Platforms We Use</h3>
+                <div class="tech-tags">
+                    <span>Google Ads</span><span>Meta Business</span><span>SEO Tools</span><span>Analytics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('social-setup-toggle');
+            const panel = document.getElementById('social-pricing-panel');
+            const buttons = panel.querySelectorAll('.package-btn');
+            const title = document.getElementById('social-package-title');
+            const price = document.getElementById('social-package-price');
+            const boost = document.getElementById('social-package-boost');
+            const note = document.getElementById('social-package-note');
+            const request = document.getElementById('social-package-request');
+
+            const packageInfo = {
+                facebook: {
+                    title: 'Facebook Only',
+                    price: 'Base Price: LKR 8,000',
+                    boost: 'Boost Option: + LKR 5,000',
+                    note: 'Professional Facebook page setup and branding.',
+                    subject: 'Request%20Facebook%20Page%20Setup'
+                },
+                tiktok: {
+                    title: 'TikTok Only',
+                    price: 'Base Price: LKR 7,000',
+                    boost: 'Boost Option: + LKR 4,500',
+                    note: 'Creative TikTok profile setup with content guidance.',
+                    subject: 'Request%20TikTok%20Page%20Setup'
+                },
+                instagram: {
+                    title: 'Instagram Only',
+                    price: 'Base Price: LKR 7,500',
+                    boost: 'Boost Option: + LKR 4,800',
+                    note: 'Stylish Instagram setup with profile and reels strategy.',
+                    subject: 'Request%20Instagram%20Page%20Setup'
+                },
+                two: {
+                    title: 'Two Platforms',
+                    price: 'Package Price: LKR 14,000',
+                    boost: 'Boost Option: + LKR 9,000',
+                    note: 'Save with any two-platform bundle and get a discount.',
+                    subject: 'Request%20Two%20Social%20Media%20Platforms%20Setup'
+                },
+                all: {
+                    title: 'All Three Platforms',
+                    price: 'Bundle Price: LKR 20,000',
+                    boost: 'Boost Option: + LKR 12,000',
+                    note: 'Best value bundle with Facebook, TikTok and Instagram setup.',
+                    subject: 'Request%20All%20Three%20Social%20Media%20Platforms%20Setup'
+                }
+            };
+
+            const email = 'mtsdblueprint@gmail.com';
+
+            const updatePackage = (key) => {
+                const pkg = packageInfo[key];
+                title.textContent = pkg.title;
+                price.textContent = pkg.price;
+                boost.textContent = pkg.boost;
+                note.textContent = pkg.note;
+                request.href = `mailto:${email}?subject=${pkg.subject}`;
+                request.textContent = `Request ${pkg.title}`;
+            };
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    updatePackage(button.dataset.package);
+                });
+            });
+
+            toggle.addEventListener('click', () => {
+                const isHidden = panel.classList.toggle('hidden');
+                toggle.textContent = isHidden ? 'View Social Packages' : 'Hide Social Packages';
+            });
+        });
+    </script>
+</body>
+</html>

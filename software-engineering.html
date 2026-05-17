@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+    <div class="back-btn-container">
+        <a href="index.html" class="btn" style="display: inline-block; padding: 10px 25px; text-decoration: none;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <section class="interactive-services">
+        <div class="panel-header">
+            <h3 class="section-title" style="text-align: left;">Software Engineering Pricing</h3>
+        </div>
+        
+        <div class="inner-cards-grid">
+            
+            <div class="inner-price-card highlighted animate-card">
+                <span class="badge" id="web-dynamic-tech">React Web App</span> 
+                <div class="card-image-box">
+                    <i class="fa-solid fa-laptop-code img-placeholder-icon"></i>
+                </div>
+                <div class="card-icon-badge"><i class="fa-solid fa-globe"></i></div>
+                <h4>Web Site & System Dev</h4>
+                <p class="price"><span>Starting from</span> LKR <span id="web-dynamic-price">200,000</span></p>
+                <p class="desc">Custom, responsive web applications, e-commerce stores, and enterprise management systems built for performance.</p>
+                <a href="mailto:sumuduhasinika431@gmail.com?subject=Request%20Web%20Site%20%26%20System%20Development" class="btn request-btn">Request This</a>
+            </div>
+
+            <div class="inner-price-card premium animate-card">
+                <span class="badge" id="mobile-dynamic-tech">Flutter Application</span> 
+                <div class="card-image-box">
+                    <i class="fa-solid fa-mobile-screen-button img-placeholder-icon"></i>
+                </div>
+                <div class="card-icon-badge"><i class="fa-solid fa-code"></i></div>
+                <h4>Mobile App Development</h4>
+                <p class="price"><span>Starting from</span> LKR <span id="mobile-dynamic-price">250,000</span></p>
+                <p class="desc">High-performance iOS and Android mobile applications crafted using robust and modern architectures.</p>
+                <a href="mailto:sumuduhasinika431@gmail.com?subject=Request%20Mobile%20App%20Development" class="btn request-btn">Request This</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="info-section" style="padding-top: 0;">
+        <div class="info-container">
+            <div class="info-box" style="width: 100%;">
+                <h3>Select a Technology to View Base Pricing</h3>
+                <div class="tech-tags interactive-tech">
+                    <span class="tech-btn active" data-type="web" data-tech="React Web App" data-price="200000">React</span>
+                    <span class="tech-btn" data-type="web" data-tech="Next.js Web App" data-price="280000">Next.js</span>
+                    <span class="tech-btn" data-type="web" data-tech="Node.js Backend" data-price="180000">Node.js</span>
+                    <span class="tech-btn" data-type="web" data-tech="Laravel System" data-price="150000">Laravel</span>
+                    <span class="tech-btn" data-type="web" data-tech="Java Enterprise" data-price="350000">Java</span>
+                    <span class="tech-btn active" data-type="mobile" data-tech="Flutter Application" data-price="250000">Flutter</span>
+                    <span class="tech-btn" data-type="web" data-tech="MySQL Database" data-price="50000">MySQL</span>
+                    <span class="tech-btn" data-type="web" data-tech="MongoDB Database" data-price="60000">MongoDB</span>
+                    <span class="tech-btn" data-type="mobile" data-tech="Firebase Mobile System" data-price="75000">Firebase</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <h2 class="section-title">Development Process</h2>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="step-num">01</div>
+                <h3>Consultation</h3>
+                <p>We discuss your business goals, requirements, and project vision.</p>
+            </div>
+            <div class="process-card">
+                <div class="step-num">02</div>
+                <h3>Planning & Proposal</h3>
+                <p>We create a project roadmap, quotation, and timeline.</p>
+            </div>
+            <div class="process-card">
+                <div class="step-num">03</div>
+                <h3>Design & Development</h3>
+                <p>Our team designs and develops your project using modern technologies.</p>
+            </div>
+            <div class="process-card">
+                <div class="step-num">04</div>
+                <h3>Testing & Optimization</h3>
+                <p>We test performance, security, responsiveness, and user experience.</p>
+            </div>
+            <div class="process-card">
+                <div class="step-num">05</div>
+                <h3>Launch & Support</h3>
+                <p>Your project goes live with ongoing maintenance and support.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-box" style="width: 100%;">
+                <h3>Payment Structure</h3>
+                <ul class="payment-list">
+                    <li><span>Project Start</span> <strong class="glow-text">40%</strong></li>
+                    <li><span>Mid Development</span> <strong class="glow-text">40%</strong></li>
+                    <li><span>Before Launch</span> <strong class="glow-text">20%</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const techButtons = document.querySelectorAll('.tech-btn');
+            
+            // Web App Elements
+            const webPriceDisplay = document.getElementById('web-dynamic-price');
+            const webTechDisplay = document.getElementById('web-dynamic-tech');
+            
+            // Mobile App Elements
+            const mobilePriceDisplay = document.getElementById('mobile-dynamic-price');
+            const mobileTechDisplay = document.getElementById('mobile-dynamic-tech');
+
+            techButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const type = button.getAttribute('data-type');
+                    const targetPrice = button.getAttribute('data-price');
+                    const targetTech = button.getAttribute('data-tech');
+
+                    // අදාළ කාණ්ඩයේ බටන්ස් විතරක් active/deactive කරන්න
+                    document.querySelectorAll(`.tech-btn[data-type="${type}"]`).forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Web ද Mobile ද කියලා චෙක් කරලා අදාළ කාඩ් එක විතරක් අප්ඩේට් කරනවා
+                    if (type === 'web') {
+                        webPriceDisplay.style.opacity = '0';
+                        webTechDisplay.style.opacity = '0';
+                        setTimeout(() => {
+                            webPriceDisplay.textContent = Number(targetPrice).toLocaleString();
+                            webTechDisplay.textContent = targetTech;
+                            webPriceDisplay.style.opacity = '1';
+                            webTechDisplay.style.opacity = '1';
+                        }, 200);
+                    } else if (type === 'mobile') {
+                        mobilePriceDisplay.style.opacity = '0';
+                        mobileTechDisplay.style.opacity = '0';
+                        setTimeout(() => {
+                            mobilePriceDisplay.textContent = Number(targetPrice).toLocaleString();
+                            mobileTechDisplay.textContent = targetTech;
+                            mobilePriceDisplay.style.opacity = '1';
+                            mobileTechDisplay.style.opacity = '1';
+                        }, 200);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

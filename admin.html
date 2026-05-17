@@ -1,0 +1,154 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BluePrint Admin Panel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    body { font-family: 'Poppins', sans-serif; background:#050a30; color:white; margin:0; display:flex; }
+    .sidebar { width:250px; background:#001a2e; padding:20px; min-height:100vh; }
+    .sidebar h2 { color:#00eeff; margin-bottom:30px; }
+    .sidebar ul { list-style:none; padding:0; }
+    .sidebar ul li { margin:20px 0; }
+    .sidebar ul li a { color:white; text-decoration:none; }
+    .sidebar ul li a:hover { color:#00eeff; }
+    .admin-main { flex:1; padding:30px; overflow:auto; }
+    h2 { color:#00eeff; margin-bottom:20px; }
+    table { width:100%; border-collapse: collapse; margin-bottom:20px; }
+    th, td { border:1px solid rgba(255,255,255,0.3); padding:10px; text-align:left; }
+    button { padding:8px 15px; margin:2px; border:none; border-radius:5px; cursor:pointer; background:#00eeff; color:#050a30; }
+    .gallery-item-admin { margin-bottom:15px; display:flex; align-items:center; gap:10px; }
+    .gallery-item-admin img { width:80px; height:50px; object-fit:cover; border-radius:5px; }
+    input[type="text"] { padding:5px; border-radius:5px; border:none; width:200px; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <h2><i class="fas fa-tools"></i> Admin Panel</h2>
+    <ul>
+        <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+        <li><a href="#gallery"><i class="fas fa-image"></i> Gallery</a></li>
+        <li><a href="#contacts"><i class="fas fa-envelope"></i> Contacts</a></li>
+    </ul>
+</aside>
+
+<main class="admin-main">
+    <!-- Services Management -->
+    <section id="services">
+        <h2>Manage Services</h2>
+        <table id="services-table">
+            <tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+        </table>
+        <button onclick="addService()">Add Service</button>
+    </section>
+
+    <!-- Gallery Management -->
+    <section id="gallery">
+        <h2>Manage Gallery</h2>
+        <div id="gallery-items"></div>
+        <button onclick="addGalleryItem()">Add Image</button>
+    </section>
+
+    <!-- Contact Messages -->
+    <section id="contacts">
+        <h2>Contact Messages</h2>
+        <div id="contact-list"></div>
+    </section>
+</main>
+
+<script>
+    // Services
+    let services = [
+        {name:'Web Dev', desc:'Custom websites'},
+        {name:'Mobile App', desc:'iOS & Android apps'}
+    ];
+
+    function renderServices() {
+        let table = document.getElementById('services-table');
+        table.innerHTML = '<tr><th>Name</th><th>Description</th><th>Actions</th></tr>';
+        services.forEach((s,i)=>{
+            let row = table.insertRow();
+            row.insertCell(0).innerText = s.name;
+            row.insertCell(1).innerText = s.desc;
+            row.insertCell(2).innerHTML = `<button onclick="editService(${i})">Edit</button> <button onclick="deleteService(${i})">Delete</button>`;
+        });
+    }
+
+    function addService() {
+        let name = prompt("Service Name:");
+        let desc = prompt("Description:");
+        if(name && desc){ services.push({name,desc}); renderServices(); }
+    }
+
+    function editService(i){
+        let name = prompt("Edit Name:", services[i].name);
+        let desc = prompt("Edit Desc:", services[i].desc);
+        if(name && desc){ services[i]={name,desc}; renderServices(); }
+    }
+
+    function deleteService(i){ services.splice(i,1); renderServices(); }
+
+    renderServices();
+
+    // Gallery
+    let galleryItems = [
+        { src: 'asseste/image 2.png', caption: 'UI/UX Design' },
+        { src: 'asseste/image 3.jpg', caption: 'Web Development' }
+    ];
+
+    function renderGalleryAdmin() {
+        const container = document.getElementById('gallery-items');
+        container.innerHTML = '';
+        galleryItems.forEach((item,i)=>{
+            const div = document.createElement('div');
+            div.className = 'gallery-item-admin';
+            div.innerHTML = `
+                <img src="${item.src}" alt="${item.caption}">
+                <input type="text" value="${item.caption}" onchange="updateGalleryCaption(${i}, this.value)">
+                <button onclick="deleteGalleryItem(${i})">Delete</button>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function addGalleryItem() {
+        let src = prompt("Image URL:");
+        let caption = prompt("Caption:");
+        if(src && caption){ galleryItems.push({src,caption}); renderGalleryAdmin(); }
+    }
+
+    function updateGalleryCaption(i, val) {
+        galleryItems[i].caption = val;
+        alert('Updated!');
+    }
+
+    function deleteGalleryItem(i){
+        galleryItems.splice(i,1);
+        renderGalleryAdmin();
+    }
+
+    renderGalleryAdmin();
+
+    // Contact Messages (demo)
+    let contacts = [
+        {name:'John Doe', email:'john@mail.com', message:'Hello!'}
+    ];
+
+    function renderContacts() {
+        const container = document.getElementById('contact-list');
+        container.innerHTML = '';
+        contacts.forEach(c=>{
+            const div = document.createElement('div');
+            div.style.marginBottom='15px';
+            div.innerHTML = `<strong>${c.name} (${c.email})</strong><p>${c.message}</p>`;
+            container.appendChild(div);
+        });
+    }
+
+    renderContacts();
+</script>
+
+</body>
+</html>
